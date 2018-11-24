@@ -1,0 +1,4 @@
+CREATE TABLE  IF NOT EXISTS users (
+  user_id SERIAL PRIMARY KEY,
+  wallet_address VARCHAR(255) NOT NULL
+)
