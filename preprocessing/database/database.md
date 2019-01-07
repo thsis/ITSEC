@@ -17,7 +17,7 @@ sudo apt install postgresql postgresql-contrib
     4. Close psql. `\q`.
 
 3. Create the database: `CREATE DATABASE ethereum;`
-
+4. Connect to database: `\c ethereum;`
 4. Run `python3 create_tables.py`
 
 ## Documentation
@@ -31,3 +31,15 @@ sudo apt install postgresql postgresql-contrib
 | `gas_limit`      | `int`    | |
 | `number`         | `int`    | unique id of block|
 | `inception_time` | `int`    | time of inception|
+
+### `transactions`
+
+|column              | type      | description |
+|:- ----------------:|:---------:|:-----------:|
+| `transaction_hash` | `string`  | hash of transation - not unique|
+| `block_hash`       | `string`  ||
+| `sender`           | `string`  ||
+| `receiver`         | `string`  ||
+| `value`            | `float`   ||
+| `gas_used`         | `integer` ||
+| `gas_price`        | `bigint`  ||

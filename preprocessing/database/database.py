@@ -2,13 +2,24 @@ import psycopg2
 from config import config
 from web3.auto import w3
 from hexbytes import HexBytes
+from blockchain import blockexplorer
 
 
 def extract_info(dictlike, keys):
+    """
+    Extract values from a dictionary-style object.
+
+    * Parameters:
+        * `dictlike`: object that has a `__get__`-method implemented.
+        * `keys`: list of keys to loop over.
+
+    * Returns:
+        * `out`: tuple of values corresponding to each key in `keys`.
+    """
     out = []
 
     for key in keys:
-        val = dictlike.get(key, "NULL")
+        val = getattr(dictlike, key, "NULL")
         if val is None:
             val = "NULL"
         if type(val) == HexBytes:
@@ -20,7 +31,14 @@ def extract_info(dictlike, keys):
 
 
 def update(dictlike, table, keys):
-    """Update the block-table with the contents of one block."""
+    """
+    Update a database-table with the contents of one block.
+
+    * Parameters:
+        * `dictlike`: object that has a `__get__`-method implemented.
+        * `table`: (`str`) name of table to update.
+        * `keys`: list of keys to loop over.
+    """
 
     row = extract_info(dictlike, keys)
 
@@ -41,7 +59,15 @@ def update(dictlike, table, keys):
 
 
 def update_list(block, table, keys, block_key="transactions"):
-    """Update table with the contents of one block."""
+    """
+    Batch update a database-table with the contents of one block.
+
+    * Parameters:
+        * `block`: object that has a `__get__`-method implemented.
+        * `table`: (`str`) name of table to update.
+        * `keys`: list of keys to loop over.
+        * `block_key`: (`str`) key of `block` that contains an iterable.
+    """
     conn = None
     try:
         params = config()
@@ -63,10 +89,23 @@ def update_list(block, table, keys, block_key="transactions"):
             conn.close()
 
 
+def tx_iterator(block):
+    for transaction in block.transactions:
+        yield transaction.hex()
+
+
 if __name__ == "__main__":
     block = w3.eth.getBlock(6753133)
     block_keys = ["hash", "gasUsed", "gasLimit", "number", "timestamp"]
     tx_keys = ["blockHash", "hash", "from", "to", "value", "gas", "gasPrice"]
+    ip_keys = ["hash", "relayed_by"]
 
     update(block, 'blocks', block_keys)
     update_list(block, 'transactions', tx_keys)
+    for tx in tx_iterator(block):
+        try:
+            transaction = blockexplorer.get_tx(tx)
+            update(transaction, 'ip_info', ip_keys)
+        except Exception as e:
+            print(e)
+            continue
