@@ -3,8 +3,9 @@ import sys
 import database
 import logging
 from web3.auto import w3
+from web3.exceptions import UnhandledRequest
 from tqdm import trange
-from blockchain import blockexplorer
+from blockchain import blockexplorer, exceptions
 
 # Read api-key
 if os.path.exists("api_code.txt"):
@@ -66,12 +67,17 @@ if __name__ == "__main__":
                 try:
                     transaction = blockexplorer.get_tx(tx, api_code=api_code)
                     database.update(transaction, 'ip_info', ip_keys)
+                except exceptions.APIException:
+                    continue
                 except Exception as e:
                     logger.info(e)
                     continue
             # Save progress
             with open("progress.txt", "a") as f:
                 f.write(str(current_block_nr) + "\n")
+        except UnhandledRequest as error:
+            logger.error(error)
+            sys.exit(1)
 
         except (EOFError, KeyboardInterrupt):
             logger.info("Aborting ETL")
@@ -79,5 +85,5 @@ if __name__ == "__main__":
         except Exception as error:
             logger.error(error)
             with open("broken.txt", "a") as f:
-                f.write(str(current_block_nr))
+                f.write(str(current_block_nr) + "\n")
             continue
