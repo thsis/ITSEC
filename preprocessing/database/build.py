@@ -70,7 +70,7 @@ if __name__ == "__main__":
                 except exceptions.APIException:
                     continue
                 except Exception as e:
-                    logger.info(e)
+                    logger.error(e)
                     continue
             # Save progress
             with open("progress.txt", "a") as f:

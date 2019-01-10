@@ -10,7 +10,7 @@ def extract_info(dictlike, keys):
     Extract values from a dictionary-style object.
 
     * Parameters:
-        * `dictlike`: object that has a `__get__`-method implemented.
+        * `dictlike`: object that has all attributes in `keys`
         * `keys`: list of keys to loop over.
 
     * Returns:

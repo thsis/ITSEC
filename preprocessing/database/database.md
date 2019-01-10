@@ -37,9 +37,16 @@ sudo apt install postgresql postgresql-contrib
 |column              | type      | description |
 |:- ----------------:|:---------:|:-----------:|
 | `transaction_hash` | `string`  | hash of transation - not unique|
-| `block_hash`       | `string`  ||
-| `sender`           | `string`  ||
-| `receiver`         | `string`  ||
-| `value`            | `float`   ||
-| `gas_used`         | `integer` ||
-| `gas_price`        | `bigint`  ||
+| `block_hash`       | `string`  | |
+| `sender`           | `string`  | |
+| `receiver`         | `string`  | |
+| `value`            | `float`   | |
+| `gas_used`         | `integer` | |
+| `gas_price`        | `bigint`  | |
+
+### `ip_info`
+
+|column              | type      | description |
+|:- ----------------:|:---------:|:-----------:|
+| `transaction_hash` | `string`  | |
+| `ip_address`       | `string`  | `IPv4`-Address|
