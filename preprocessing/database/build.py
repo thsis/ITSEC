@@ -87,3 +87,5 @@ if __name__ == "__main__":
             with open("broken.txt", "a") as f:
                 f.write(str(current_block_nr) + "\n")
             continue
+
+    logger.info("End of ETL.")

@@ -1,7 +1,7 @@
 WITH blocktable AS (
   SELECT
     block_hash,
-    gas_used,
+    gas_used AS block_gas,
     gas_limit,
     inception_time
   FROM blocks
