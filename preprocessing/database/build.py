@@ -55,7 +55,7 @@ if __name__ == "__main__":
         end_block_nr = start_block_nr + 1000000
 
     block_keys = ["hash", "gasUsed", "gasLimit", "number", "timestamp"]
-    tx_keys = ["blockHash", "hash", "from", "to", "value", "gas", "gasPrice"]
+    tx_keys = ["hash", "blockHash", "from", "to", "value", "gas", "gasPrice"]
     ip_keys = ["hash", "relayed_by"]
 
     for current_block_nr in trange(start_block_nr, end_block_nr+1):

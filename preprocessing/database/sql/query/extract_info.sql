@@ -10,8 +10,8 @@ WITH blocktable AS (
 
 transactiontable AS (
   SELECT
-    transaction_hash AS block_hash,
-    block_hash AS tx_hash,
+    transaction_hash,
+    block_hash,
     sender,
     receiver,
     value,
