@@ -4,7 +4,6 @@ SELECT
   b.gas_limit,
   b.inception_time,
   t.transaction_hash,
-  t.block_hash,
   t.sender,
   t.receiver,
   t.value,
