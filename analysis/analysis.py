@@ -98,11 +98,15 @@ edges["total"] = outgoing + ingoing
 triangles = nx.triangles(G)
 edges["triangles"] = pd.Series(triangles).reindex(idx, fill_value=0)
 edges["C_in"] = 2*edges["triangles"] / (edges["ingoing"]*(edges["ingoing"]-1))
-edges["C_out"] = 2*edges["triangles"] / (edges["outgoing"]*(edges["outgoing"]-1))
+edges["C_out"] = 2*edges["triangles"]/(edges["outgoing"]*(edges["outgoing"]-1))
 edges["C_total"] = 2*edges["triangles"] / (edges["total"]*(edges["total"]-1))
 
-avg_cluster = edges[["C_in", "C_out", "C_total"]].replace(np.inf, 0).fillna(0).mean()
+edges.replace([np.inf, np.nan], 0, inplace=True)
+avg_cluster = edges[["C_in", "C_out", "C_total"]].mean()
 
+edges.C_in.plot(kind="density")
+edges.C_out.plot(kind="density")
+edges.C_total.plot(kind="density")
 # Fit power law
 fig, ax = plt.subplots(1)
 
@@ -140,3 +144,5 @@ edges["deg_centrality"] = pd.Series(deg_cent).reindex(idx)
 # Between centrality
 bet_cent = nx.betweenness_centrality(G)
 edges["betw_centrality"] = pd.Series(bet_cent).reindex(idx)
+avg_cluster
+avg_cluster.to_latex()

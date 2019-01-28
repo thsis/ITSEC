@@ -28,5 +28,4 @@ for block in trange(2000000, 2014806):
         else:
             df.to_csv(datafile, index=False)
     except Exception as e:
-        print("error")
-        print(e)
+        logger.error(e)
