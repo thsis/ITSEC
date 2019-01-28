@@ -14,7 +14,7 @@ formatter = logging.Formatter(format)
 fh.setFormatter(formatter)
 logger.addHandler(fh)
 
-datafile = os.path.join(".", "data", "ethereum-data.csv")
+datafile = os.path.join("..", "..", "data", "ethereum-data.csv")
 columns = ["block_hash", "block_gas", "gas_limit", "inception_time", "tx_hash",
            "sender", "receiver", "value", "gas_used", "gas_price"]
 
