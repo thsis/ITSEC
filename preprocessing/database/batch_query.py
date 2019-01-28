@@ -5,7 +5,7 @@ import pandas as pd
 from config import config
 
 
-datafile = os.path.join("..", "..", "data", "ethereum-data.csv")
+datafile = os.path.join("..", "..", "data", "ethereum-data-large.csv")
 columns = ["block_hash", "block_gas", "gas_limit", "inception_time", "tx_hash",
            "sender", "receiver", "value", "gas_used", "gas_price"]
 

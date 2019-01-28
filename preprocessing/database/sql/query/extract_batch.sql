@@ -27,4 +27,3 @@ FROM (
     gas_price
   FROM transactions) t
   ON t.block_hash = b.block_hash
-LIMIT 10
