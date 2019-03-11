@@ -1,0 +1,70 @@
+We can characterize a network by a number of metrics. The degree of a node in the network is the number of incoming or outgoing edges. We define a \emph{triplet} $i, v, j$ as an ordered set of three nodes, where $v$ is the focal point and the undirected edges $<i, v>$ and $<v, j>$ form the neighboring edges. A triplet is considered closed, when there are exactly three connections for the three nodes. Three closed triplets form a \emph{triangle} \cite{graphintro}. Additionally, we can define multiple measures to investigate a node's role inside the network.
+
+\subsubsection{Degree Centrality}
+
+The most common centrality measure focuses on counting the number of nodes in it's immediate vicinity. It measures the centrality by counting the number of direct connections to the node. For a network with $g$ nodes, the degree centrality of node $n$ is defined as
+
+\begin{equation}
+C_D(n) = \frac{k(n)}{g-1},
+\end{equation}
+
+where $k(n)$ denotes the degree of node $n$. The Degree Centrality is normalized by $g-1$ since this is the highest possible degree, a node that is connected to every node in the network other than itself \cite{graphintro}.
+
+\subsubsection{Closeness Centrality}
+
+While the Degree Centrality only takes the adjacent nodes into account, it may be possible that the most central in this sense, i.e. the node with the highest degree, is in fact not close to other nodes in the network. This shortcoming is overcome by the \emph{Closeness Centrality}. It considers the sum of geodesic distances, i.e. the number of edges in the shortest path between two nodes. The Closeness Centrality of a network with $g$ nodes is defined as 
+
+\begin{equation}
+C_C(n) = \frac{g - 1}{\sum\limits_{i=1}^g d(n, i)},
+\end{equation}
+
+where $d(i, j)$ stands for the geodesic distance between node $i$ and $j$ \cite{graphintro}.
+
+\subsubsection{Betweenness Centrality}
+
+So far, all the measures focus heavily on the direct influence of the node in question on others. However, two nodes which are not adjacent can also influence each other indirectly through other nodes in the network. The \emph{Betweenness Centrality} highlights the nodes that lie most frequently in the connecting path between two nodes. For a network with $g$ nodes the Betweenness Centrality for node $n$ is defined by the sum over all geodesic distances that pass node $n$, normalized by the sum of all shortest paths of all pairs of nodes:
+
+\begin{equation*}
+C_b(n) = \frac{\sum\limits_{j<k} g_{jk}(n)}{g_{jk}}.
+\end{equation*}
+
+Here, $g_{jk}$ denotes the number of shortest paths between two nodes of the netwok and $g_{jk}(n)$ marks the number of shortest paths that pass through node $n$. Since the maximum number of such paths is $$\frac{(g-1)(g-2)}{2}.$$ One can thus further normalize:
+
+\begin{equation}
+C_B(n) = \frac{C_b(n)}{\frac{(g-1)(g-2)}{2}}.
+\end{equation}
+
+\subsubsection{Clustering Coefficient}
+
+In order to account for local structures in graph theory, one uses the \emph{Clustering Coefficient}. There is evidence that suggests that the ties between nodes in most real-world networks tend to create tightly knit groups with a relatively high density of connections \cite{graphcluster}. 
+
+There exist two versions of this measure, the \emph{global} and the \emph{local} Clustering Coefficient. The global Clustering Coefficient $C_G$ is the number of triangles over the total number of open or closed triplets in the graph. This measure can be applied to both directed and undirected networks.
+
+The local Clustering Coefficient for a node $n$ is given by the proportion of links between all adjacent vertices divided by the number of links that could possibly occur between them. For a directed graph the in- and outgoing edges have a different meaning and therefore the maximum number of immediately adjacent neighbors of $n$ is $k (k-1),$ where $k$ is the degree of node $n$. The neighborhood of a node $n$, i.e. its immediately connected neighbors, is defined as $$N = \{n: e_{ij}\in E \cap e_{ji} \in E\},$$ where $E$ is the set of edges. 
+
+Thus the local clustering coefficient of of node $n$ is given by:
+
+\begin{align}
+C_L(n) &= \frac{\text{number of closed triplets centered around n}}{\text{number of triplets centered around n}} \nonumber \\
+       &= \frac{|\{ e_{jk}: v_j, v_k \in N \cap e_{jk} \in E \}|}{k(k-1)}. 
+\end{align}
+
+In an undirected graph the meaning of in- and outgoing edges is considered identical. Therefore if a node $n$ has degree $k$, there could exist a total of $\frac{k(k-1)}{2}$ edges within $n$'s neighborhood. Thus the local Clustering Coefficient of a undirected network can be defined as
+
+\begin{equation}
+C_L(n) = \frac{2\cdot |\{ e_{jk}: v_j, v_k \in N \cap e_{jk} \in E \}|}{k(k-1)}.
+\end{equation}
+
+This means that nodes with a high Clustering Coefficient play a large role when relaying information through the network \cite{graphbs}.
+
+\subsubsection{Power Law and the Small World Phenomenon}
+
+The small world phenomenon describes that the size of a network does not have any effect on the size of ties among its nodes. This means that the path lengths are characteristically small just like random graphs \cite{graphcluster}.
+
+In a random graph the degree of a node $n$ follows a power law distribution, i.e. we can say:
+
+\begin{equation}
+P\left(K(n)=k\right) \propto k^{-\alpha},
+\end{equation}
+
+where $K(n)$ is the random variable that describes the degree of node $n$ and $\alpha$ is a constant whose values range between $1.6$ and $3.0$ \cite{Newman2003}. This distribution suggests that most nodes will have a low degree, while a small number of nodes will display a large number of connections \cite{powerlaw}.

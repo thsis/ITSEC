@@ -1,0 +1,47 @@
+\cite{Python}
+\cite{scipy}
+\cite{networkx}
+\cite{matplotlib}
+\cite{powerlaw}
+
+\begin{figure*}
+\centering
+\label{datamodel}
+\caption{Data Model}
+\begin{tikzpicture}[relation/.style={rectangle split, rectangle split parts=#1, rectangle split part align=base, draw, anchor=center, align=center, text height=3mm, text centered}]\hspace*{-0.3cm}
+
+% Relations
+
+\node (usertitle) {\textbf{USERS}};
+
+\node [relation=2, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.7cm of usertitle.west, anchor=west] (users)
+{\underline{wallet\_address} \\ \texttt{VARCHAR}
+\nodepart{two}   user\_id \\ \texttt{SERIAL}};
+
+\node [below=1.3cm of users.west, anchor=west] (transactionstitle) {\textbf{TRANSACTIONS}};;
+
+\node [relation=7, rectangle split horizontal, rectangle split part fill={lightgray!50}, below=0.7cm of transactionstitle.west, anchor=west] (transactions)
+{block\_hash \\ \texttt{VARCHAR}
+\nodepart{two}     value \\ \texttt{FLOAT}
+\nodepart{three}   sender \\ \texttt{VARCHAR}
+\nodepart{four}    receiver \\ \texttt{VARCHAR}
+\nodepart{five}    gas\_used \\ \texttt{INT}
+\nodepart{six}     gas\_price \\ \texttt{INT}
+\nodepart{seven}   \underline{transaction\_hash} \\ \texttt{VARCHAR}};
+
+\node [below=1.3cm of transactions.west, anchor=west] (blockstitle) {\textbf{BLOCKS}};
+
+\node [relation=5, rectangle split horizontal, rectangle split part fill={lightgray!50}, below=0.7 cm of blockstitle.west, anchor=west] (blocks)
+{block\_id \\ \texttt{SERIAL}
+\nodepart{two}        \underline{block\_hash} \\ \texttt{VARCHAR}
+\nodepart{three}      inception\_time \\ \texttt{INT}
+\nodepart{four}       gas\_used \\ \texttt{INT}
+\nodepart{five}       gas\_limit \\ \texttt{INT}};
+
+% Foreign keys
+
+\draw[-latex] (users.one south) --++ (0, -0.2) -| (transactions.three north);
+\draw[-latex] (users.one south) --++ (0, -0.2) -| (transactions.four north);
+\draw[-latex] (blocks.two north) --++ (0, 0.75) -| (transactions.one south);
+\end{tikzpicture}
+\end{figure*}
