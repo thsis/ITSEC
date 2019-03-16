@@ -3,7 +3,9 @@
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
-\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
@@ -12,6 +14,7 @@
 \usetikzlibrary{shapes,positioning,calc}
 \colorlet{lightgray}{gray!20}
 
+\usepackage{booktabs}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -77,15 +80,16 @@ thomas.siskos@hu-berlin.de}
 \subsection{Data Preparation}
 \input{findings-data-preparation.tex}
 
-\subsection{Graph Analysis}
-\input{findings-graph-analysis.tex}
-
 \subsection{Descriptive Analytics}
 \input{findings-descriptive.tex}
+
+\subsection{Graph Analysis}
+\input{findings-graph-analysis.tex}
 
 \section{Conclusion}
 \input{conclusion.tex}
 
+\newpage
 \bibliographystyle{apacite}
 \bibliography{references}
 

@@ -1,0 +1,20 @@
+We encountered many difficulties during our attempts at collecting and refining the data. At first, we attempted to deploy the data-scraper on a \texttt{RaspberryPi 3} Model B in conjecture with an external HDD hard drive. We decided on this option, since it did not require any of us to commit indispensable computing ressources and at that time it seemed to be the most convenient option.
+
+That attempt was, in hindsight, doomed to fail due to the hardware's limitations. The problem did not lie in the hardware intensity of the data-scraper in itself, but rather in the inordinate amounts of memory it takes for \texttt{go-ethereum} to synchronize with the Ethereum blockchain. The interface to the ethereum blockchain, \texttt{go-ethereum}, is written in a manner that is primarily optimized for mining ether and in order to facilitate the commissioning of transactions and smart-contracts. The way the programm achieves this is by consuming as much memory as there is available on the system, or at least as much memory as the user is willing to allocate to it before starting the program. However, whenever the program runs out of memory or whenever it attempts to exceed its predetermined limit the process shuts down and kills itself. This does not result in a system crash, but it does inhibit the workings of the \texttt{Python} libraries that are used inside the data-scraper.
+
+This design of the \texttt{go-ethereum} program frequently led to the \texttt{RaspberryPi}'s 1 GB of memory being filled after only a short period of time, usually between thirty minutes and three hours. Note, that the data-scraper's construction did anticipate interruptions and it is possible to resume scraping the Ethereum blockchain from the current block without the loss of any data and without the need to redundandly query more than the one block at which the disconnection happened. This behaviour meant that the \texttt{RaspberryPi} was idling for most of the time.
+
+Unfortunate as this was, it was not the only problem. The use of an external hard disk drive for storing the database meant that a considerable amount of the time during which the \texttt{RaspberryPi} was productive was spent on input/output-operations while it was commiting the scraped information into the database. In order to alleviate the bottleneck that was presented by the I/O-operations it would have been favorable to use an external solid state drive for that task. However, we were too frugal to obtain one just for the singular purpose of this seminar paper.
+
+This means that after running the data-scraper for an entire month, along with taking all the care that is reasonable, in order to keep the scraper afloat, we were able to extract 120.000 transactions from 15.000 blocks which tantamounts to merely three days of data.
+
+We solved all these problems by taking up the offer \emph{Microsoft Azure} provides for students. Using this free initial student credit on the \emph{Microsoft Azure} servers it was possible to set up a virtual machine with 32 GiB of memory along with access to an additional solid state drive. The fact that it is possible to rent out a \texttt{Linux} machine on the \emph{Microsoft Azure} servers made it possible to migrate the scripts for the data-scraper without the need for adjustments.
+
+\begin{table}[h]
+\centering
+\caption{Summary statistics}
+\input{../analysis/descriptive.tex}
+\label{summarystats}
+\end{table}
+
+The initial student credit was enough to deploying the data-scraper on the \emph{Microsoft Azure} servers for about a week. During this week we were able to extract 2 GB of data that consist of one million blocks with a total of 7.3 million transactions made from 415000 distinct wallets. Table \ref{summarystats} describes some rudimentary statistics.
