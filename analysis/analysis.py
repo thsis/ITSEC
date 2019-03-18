@@ -18,8 +18,6 @@ data.inception_time = pd.to_datetime(data.inception_time,
 data["day"] = data.inception_time.dt.date
 # Convert to ether
 data["value"] = data["value"] / 10**18
-#data["gas_used"] = data["gas_used"] / 10**18
-#data["gas_price"] = data["gas_price"] / 10**18
 
 # Load general dataset
 general_data = pd.read_csv(general_data_path,
@@ -80,6 +78,8 @@ interactors = sender.intersection(receiver)
 
 loc = data.sender.isin(interactors) & data.receiver.isin(interactors)
 interactor_data = data.loc[loc, ["sender", "receiver", "value"]]
+interactor_data.shape
+len(interactors)
 
 fig, ax = plt.subplots(1, figsize=(15, 15))
 sample = interactor_data.sample(2000)

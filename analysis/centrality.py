@@ -48,7 +48,6 @@ G.add_nodes_from(nodes_for_adding=sample.sender.tolist())
 
 print("Compute Centrality-Measures")
 deg_cent = nx.degree_centrality(G)
-print(deg_cent.describe()())
 bet_deg_cent = nx.betweenness_centrality(G)
 closeness_cent = nx.closeness_centrality(G)
 node_clustering = nx.clustering(G)

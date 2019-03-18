@@ -2,7 +2,6 @@ In order to access the data in any form of blockchain technology one must first 
 
 
 \begin{algorithm}[h]
-\label{etl}
 \begin{algorithmic}
 \State Check progress file if the ETL can be resumed from a block.
 \If {yes}
@@ -23,6 +22,7 @@ In order to access the data in any form of blockchain technology one must first 
 \EndWhile
 \end{algorithmic}
 \caption{Data Scraper: Overview}
+\label{etl}
 \end{algorithm}
 
 
@@ -32,7 +32,6 @@ In particular, for each block inside a predetermined range we query its contents
 
 \begin{figure*}[ht]
 \centering
-\label{datamodel}
 \begin{tikzpicture}[relation/.style={rectangle split, rectangle split parts=#1, rectangle split part align=base, draw, anchor=center, align=center, text height=3mm, text centered}]
 % Relations
 
@@ -69,6 +68,7 @@ In particular, for each block inside a predetermined range we query its contents
 \draw[-latex] (blocks.two north) --++ (0, 0.75) -| (transactions.one south);
 \end{tikzpicture}
 \caption{Database Model: the primary keys of each table are underlined, foreign keys are represented by arrows, the type of each column is capitalized.}
+\label{datamodel}
 \end{figure*}
 
-Making use of the list of transactions within a block we extract the wallet addresses of both sender and receiver, as well as the total value, of the transaction. Additionally we retrieve information on the gas price for the transaction. Figure \ref{datamodel} summarizes the relations within that database and Algorithm \ref{etl} gives an outline of the datascraper in pseudocode.
+Making use of the list of transactions within a block we extract the wallet addresses of both sender and receiver, as well as the total value, of the transaction. Additionally we retrieve information on the gas price for the transaction. {Figure \ref{datamodel}} summarizes the relations within that database and {Algorithm \ref{etl}} gives an outline of the datascraper in pseudocode.
