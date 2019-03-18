@@ -160,7 +160,7 @@ Wallet & Amount Received, mill. ether & Type & Affiliation \\
 \begin{table*}
 \centering
 \captionof{table}{Top 5 Major Senders (Number of TXs)}
-\label{tab:t5ms}
+\label{tabt5ms}
 \begin{adjustbox}{width=0.9\linewidth}
 \begin{tabular}{p{7cm}ccl}
   \hline
@@ -200,8 +200,9 @@ The mechanics of it is as follows:
 if there is a valid transaction on one chain, it can also be offered - replayed - on the other chain to duplicate the received amount.
 For instance, a user of the currency exchange can deposit and withdraw her money from this exchange on the old chain, and then use the 2nd transaction to withdraw money also on the new (forked) chain\footnote{See for instance \url{https://vessenes.com/hard-fork-and-replay-concerns/}.}.
 This concern was solved through inter-mediation of the smart contracts.
+
 Thus, the post by Ethereum founder Vitalik Buterin states:
-"users who are interested in taking any actions with their ETC, including creating and participating in applications, converting to another asset, etc. are advised to use the splitter contract at address 0xAA1A6e3e6EF20068f7F8d8C835d2D22fd5116444 to move their ETC to a separate newly created account so as to avoid replay attacks; we also encourage the ETC community to consider adopting a secondary hard fork to change transaction formats to make further replay attacks impossible\footnote{For details see \url{https://blog.Ethereum.org/2016/07/26/onward_from_the_hard_fork/}.}.
+"users who are interested in taking any actions with their ETC, including creating and participating in applications, converting to another asset, etc. are advised to use the splitter contract at address 0xAA1A6e3e6EF20068f7F8d8C835d2D22fd5116444 to move their ETC to a separate newly created account so as to avoid replay attacks; we also encourage the ETC community to consider adopting a secondary hard fork to change transaction formats to make further replay attacks impossible\footnote{For details see \url{https://blog.Ethereum.org/2016/07/26/onward\_from\_the\_hard\_fork/}.}.
 
 The address mentioned in the post is the biggest Receiver in our dataset\footnote{The original address in the post was substituted as the original smart-contract was changed.}.
 It has transmitted all the received money to its senders, but on the other chain.
@@ -228,15 +229,15 @@ Here, the received amount of 50 coins is splitted in several iterations to multi
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{figures/peeling_chain.png}
-  \caption{How the peeling-chain works. \\
+  \includegraphics[width=\linewidth]{figures/peeling\_chain.png}
+  \caption{How the peeling-chain works.
   \textit{From \cite{balthasar2017laundary}}}
   \label{fig:peeling_chain}
 \end{figure}
 
 Further research of the Top 5 transaction Senders allowed verifying the hypotheses about the role of different nodes and their activities.
 Using data of the Ethereum scanners as before we disclosed identities of the major accounts. 
-All of them appeared to be mining pools (see Table \ref{tab:t5ms}.
+All of them appeared to be mining pools (see Table \ref{tabt5ms}.
 Among Top 5 Receivers of transactions there are no mining pools (the accounts are a digital token YoCoin, 2 Poloniex exchange wallets, currently closed by the U.S. government cryptocurrency trading platform BTC-e and already mentioned ReplaySafeSplit smart-contract).
 Thus the hypothesis about the activity of mining pools is confirmed.
 "Peeling-chain" practices are neither confirmed nor disproved.
