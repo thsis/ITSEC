@@ -5,8 +5,7 @@ For instance, while the median value of a transaction is equal to 0,9 ether, the
 Figure \ref{fig:value_per_tx} shows the distribution of value sent in individual transactions. 
 There is a significant number of outliers indicating at certain concentration of ether holdings.
 
-
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{figures/value_per_tx.jpeg}
   \caption{Distribution of Value sent per Transaction.\\ 
@@ -21,7 +20,7 @@ Limitations in the block size and the number of blocks in a period of time may r
 To speed up transactions people pay higher fees.
 At the same time, when the exchange rate of a cryptocurrecny rises, fees tend to become lower.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{figures/fee_per_tx.jpeg}
   \caption{Distribution of Fees paid per Transaction.\\ 
@@ -36,7 +35,7 @@ Such a mistake shows one of the disadvantages of the blockchain-based currencies
 Analysis of the distribution of gas used in transactions (see Figure \ref{fig:gas_per_tx}) points at differences in their types.
 As gas measures how much "work" an action or a set of actions takes to perform, this potentially can be used to make a preliminary judgement about the prevalence of the smart contracts or about distribution of their complexity.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{figures/gas_per_tx.jpeg}
   \caption{Distribution of Gas used per Transaction. \\ 
@@ -51,7 +50,7 @@ Analysis of the transactions number over time makes the concern about unequal di
 As illustrated on the Figure \ref{fig:tx_over_time} the number of transactions on the most active days more than doubles the respective number on the days with the lowest activity. 
 Such significant variation indicates at the presence of major nodes.  
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{figures/tx_over_time.jpeg}
   \caption{Number of Transactions over Time.}
@@ -61,7 +60,7 @@ Such significant variation indicates at the presence of major nodes.
 This becomes even more visible if we consider the monetary volume of transactions over time (see Figure \ref{fig:volume_over_time}).
 Increases in volume of up to a hundred times from one day to another are an example of activity that would lead to a drastic changes in prices if these transactions are made not on chain but on currency exchanges.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{figures/volume_over_time.jpeg}
   \caption{Volume of Transactions over Time, in ether.}
@@ -96,24 +95,24 @@ Major 50 Receivers cover more than a half of the volume transacted within the ne
 
 Figure \ref{fig:major_senders_metrics} shows the data for major senders of transactions.
 Here, in terms of the transactions' number the situation is even more centralized.
-Top 5 accounts have made 36,4 \% of all transactions.
-Top 50 senders cover 60,1 \% of the entire transactions' number.
+The top 5 accounts have made 36,4 \% of all transactions.
+The top 50 senders cover 60,1 \% of the entire amount of transactions.
 At the same time in terms of volume the picture is different.
-Top 5 and Top 50 senders cover only 18,3 \% and 35,0 \% of the total transactions' value respectively.
+The top 5 receivers and the top 50 senders cover only 18,3 \% and 35,0 \% of the total transactions' value respectively.
 
 Interestingly, there are significant discrepancies in the degree of centralization if the data about receivers and spenders is compared to each other.
 This is the case for centralization both in terms of transactions' number and volume.
-Analysis of these discrepancies may shade light on some of the roles that major nodes play in the network.
+Analysis of these discrepancies may shine light on some of the roles that major nodes play in the network.
 
 \textit{Discrepancies in the Transactions' Volume between Receivers and Senders.} 
 There is a significant difference between the amount of ether received and spent by the major accounts.
-While Top 50 Receivers have accumulated 172 million ether, Top 50 Senders have spent only 123 million.
-Besides, top receivers and senders should not necessarily be the same entities. 
-Consequently there is a number of major nodes that spend less than their receive or don't spend at all.
+While the top 50 Receivers have accumulated 172 million ether, the top 50 Senders have spent only 123 million.
+Besides, the top receivers and senders should not necessarily be the same entities. 
+Consequently there is a number of major nodes that spend less than they receive or don't spend at all.
 Figure \ref{fig:balances} shows the net balances of the accounts within the studied period of time. 
 While absolute majority of accounts have balance around 0, there are few that have accumulated a significant amount of wealth.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=1\linewidth]{figures/balances.jpeg}
   \caption{Distribution of Balances within Studied Period. \\ 
@@ -121,9 +120,9 @@ While absolute majority of accounts have balance around 0, there are few that ha
   \label{fig:balances}
 \end{figure}
 
-Those could be mining pools that receive new coins and hold them anticipating appreciation of ether.
+Those could be mining pools that receive new coins and hold them anticipating, while waiting for the price of ether to rise.
 However the amount of Ethereum accumulated by such nodes seems to be too big to be explained this way.
-Despite a new block in Ethereum is mined every 10-20 seconds and remunerates miners with 5 ether, during the analyzed period of time this results in only approximately 5 million new ether.
+Despite the fact that a new block in Ethereum is mined every 10-20 seconds and reemburses miners with 5 ether, during the analyzed period of time this results in only approximately 5 million new ether.
 
 Probably, these nodes are currency exchanges that accumulate wealth of their participants. 
 They keep track of exchange transactions internally without recording them on-chain. 
@@ -177,7 +176,7 @@ Wallet & Number of TXs send & Type & Affiliation \\
 \end{table*}
 
 In order to verify how relevant this risk actually is, we conducted further investigation of the accounts that received the biggest volumes of ether.  
-Using data of the Ethereum scanners such as Etherscan.io, Etherchain.org, Blockchair.com, Bloxy.info, etc.\footnote{For details see: \\ \url{https://etherscan.io/}, \\ \url{https://www.etherchain.org/}, \\ \url{https://blockchair.com/Ethereum/}, \\ \url{https://bloxy.info/}.} we found out affiliation of the Top 5 Receivers (in terms of volume).
+Using data of the Ethereum scanners such as Etherscan.io, Etherchain.org, Blockchair.com, Bloxy.info, etc.\footnote{For details see: \url{https://etherscan.io/}, \url{https://www.etherchain.org/}, \url{https://blockchair.com/Ethereum/}, \url{https://bloxy.info/}.} we found out affiliation of the Top 5 Receivers (in terms of volume).
 
 Four out of five Top Receivers actually belong to the currency exchanges (see Table \ref{tab:t5mr}).
 However, all these accounts in reality appeared to be not regular addresses but smart contracts.
@@ -224,15 +223,18 @@ One of them is the so called "peeling-chain".
 The technique consists in dividing and sending the wealth of an account to multiple addresses again and again.
 The goal is to create an impression that several users are doing transactions instead of one.
 
-The process is illustrated on the Figure \ref{fig:peeling_chain}.
-Here, the received amount of 50 coins is splitted in several iterations to multiple accounts in an attempt to complicate tracking of a certain person´s wealth.
+The process is illustrated in figure \ref{fig:peeling_chain}.
+Here, the received amount of 50 coins is splitted in several iterations to multiple {\parfillskip0pt\par}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{figures/peelingchain.png}
   \caption{How the peeling-chain works. From \cite{balthasar2017laundary}}
   \label{fig:peeling_chain}
 \end{figure}
+
+\noindent accounts in an attempt to complicate tracking of a certain person´s wealth.
+
 
 Further research of the Top 5 transaction Senders allowed verifying the hypotheses about the role of different nodes and their activities.
 Using data of the Ethereum scanners as before we disclosed identities of the major accounts. 
