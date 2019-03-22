@@ -23,13 +23,17 @@ where $d(i, j)$ stands for the geodesic distance between node $i$ and $j$ \cite{
 
 \subsubsection{Betweenness Centrality}
 
-So far, all the measures focus heavily on the direct influence of the node in question on others. However, two nodes which are not adjacent can also influence each other indirectly through other nodes in the network. The \emph{Betweenness Centrality} highlights the nodes that lie most frequently in the connecting path between two nodes. For a network with $g$ nodes the Betweenness Centrality for node $n$ is defined by the sum over all geodesic distances that pass node $n$, normalized by the sum of all shortest paths of all pairs of nodes:
+So far, all the measures focus heavily on the direct influence of the node in question on others. 
+However, two nodes which are not adjacent can also influence each other indirectly through other nodes in the network. 
+The \emph{Betweenness Centrality} highlights the nodes that lie most frequently in the connecting path between two nodes. 
+For a network with $g$ nodes the Betweenness Centrality for node $n$ is defined by the sum over all geodesic distances that pass node $n$, normalized by the sum of all shortest paths of all pairs of nodes:
 
 \begin{equation*}
 C_b(n) = \frac{\sum\limits_{j<k} g_{jk}(n)}{g_{jk}}.
 \end{equation*}
 
-Here, $g_{jk}$ denotes the number of shortest paths between two nodes of the netwok and $g_{jk}(n)$ marks the number of shortest paths that pass through node $n$. Since the maximum number of such paths is $$\frac{(g-1)(g-2)}{2}.$$ One can thus further normalize:
+Here, $g_{jk}$ denotes the number of shortest paths between two nodes of the netwok and $g_{jk}(n)$ marks the number of shortest paths that pass through node $n$. Since the maximum number of such paths is $$\frac{(g-1)(g-2)}{2}.$$ 
+One can thus further normalize:
 
 \begin{equation}
 C_B(n) = \frac{C_b(n)}{\frac{(g-1)(g-2)}{2}}.
@@ -37,11 +41,16 @@ C_B(n) = \frac{C_b(n)}{\frac{(g-1)(g-2)}{2}}.
 
 \subsubsection{Clustering Coefficient}
 
-In order to account for local structures in graph theory, one uses the \emph{Clustering Coefficient}. There is evidence that suggests that the ties between nodes in most real-world networks tend to create tightly knit groups with a relatively high density of connections \cite{graphcluster}. 
+In order to account for local structures in graph theory, one uses the \emph{Clustering Coefficient}. 
+There is evidence that suggests that the ties between nodes in most real-world networks tend to create tightly knit groups with a relatively high density of connections \cite{graphcluster}. 
 
-There exist two versions of this measure, the \emph{global} and the \emph{local} Clustering Coefficient. The global Clustering Coefficient $C_G$ is the number of triangles over the total number of open or closed triplets in the graph. This measure can be applied to both directed and undirected networks.
+There exist two versions of this measure, the \emph{global} and the \emph{local} Clustering Coefficient. 
+The global Clustering Coefficient $C_G$ is the number of triangles over the total number of open or closed triplets in the graph. 
+This measure can be applied to both directed and undirected networks.
 
-The local Clustering Coefficient for a node $n$ is given by the proportion of links between all adjacent vertices divided by the number of links that could possibly occur between them. For a directed graph the in- and outgoing edges have a different meaning and therefore the maximum number of immediately adjacent neighbors of $n$ is $k (k-1),$ where $k$ is the degree of node $n$. The neighborhood of a node $n$, i.e. its immediately connected neighbors, is defined as $$N = \{n: e_{ij}\in E \cap e_{ji} \in E\},$$ where $E$ is the set of edges. 
+The local Clustering Coefficient for a node $n$ is given by the proportion of links between all adjacent vertices divided by the number of links that could possibly occur between them. 
+For a directed graph the in- and outgoing edges have a different meaning and therefore the maximum number of immediately adjacent neighbors of $n$ is $k (k-1),$ where $k$ is the degree of node $n$. 
+The neighborhood of a node $n$, i.e. its immediately connected neighbors, is defined as $$N = \{n: e_{ij}\in E \cap e_{ji} \in E\},$$ where $E$ is the set of edges. 
 
 Thus the local clustering coefficient of of node $n$ is given by:
 
@@ -50,7 +59,9 @@ C_L(n) &= \frac{\text{number of closed triplets centered around n}}{\text{number
        &= \frac{|\{ e_{jk}: v_j, v_k \in N \cap e_{jk} \in E \}|}{k(k-1)}. 
 \end{align}
 
-In an undirected graph the meaning of in- and outgoing edges is considered identical. Therefore if a node $n$ has degree $k$, there could exist a total of $\frac{k(k-1)}{2}$ edges within $n$'s neighborhood. Thus the local Clustering Coefficient of a undirected network can be defined as
+In an undirected graph the meaning of in- and outgoing edges is considered identical. 
+Therefore if a node $n$ has degree $k$, there could exist a total of $\frac{k(k-1)}{2}$ edges within $n$'s neighborhood.
+Thus the local Clustering Coefficient of a undirected network can be defined as
 
 \begin{equation}
 C_L(n) = \frac{2\cdot |\{ e_{jk}: v_j, v_k \in N \cap e_{jk} \in E \}|}{k(k-1)}.
@@ -60,7 +71,8 @@ This means that nodes with a high Clustering Coefficient play a large role when 
 
 \subsubsection{Power Law and the Small World Phenomenon}
 
-The small world phenomenon describes that the size of a network does not have any effect on the size of ties among its nodes. This means that the path lengths are characteristically small just like random graphs \cite{graphcluster}.
+The small world phenomenon describes that the size of a network does not have any effect on the size of ties among its nodes. 
+This means that the path lengths are characteristically small just like random graphs \cite{graphcluster}.
 
 In a random graph the degree of a node $n$ follows a power law distribution, i.e. we can say:
 
@@ -68,4 +80,5 @@ In a random graph the degree of a node $n$ follows a power law distribution, i.e
 P\left(K(n)=k\right) \propto k^{-\alpha},
 \end{equation}
 
-where $K(n)$ is the random variable that describes the degree of node $n$ and $\alpha$ is a constant whose values range between $1.6$ and $3.0$ \cite{Newman2003}. This distribution suggests that most nodes will have a low degree, while a small number of nodes will display a large number of connections \cite{powerlaw}.
+where $K(n)$ is the random variable that describes the degree of node $n$ and $\alpha$ is a constant whose values range between $1.6$ and $3.0$ \cite{Newman2003}. 
+This distribution suggests that most nodes will have a low degree, while a small number of nodes will display a large number of connections \cite{powerlaw}.
