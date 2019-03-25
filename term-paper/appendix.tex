@@ -1,29 +1,28 @@
-\subsection{Code - Datascraper}
+\include{codeconfig}
 \subsubsection{Configuration}
-\lstinputlisting{../preprocessing/database/config.py}
-\lstinputlisting{../preprocessing/database/create_tables.py}
-% SQL
-\subsubsection{Create Tables}
-\lstinputlisting{../preprocessing/database/sql/create/block.sql}
-\lstinputlisting{../preprocessing/database/sql/create/ip_info.sql}
-\lstinputlisting{../preprocessing/database/sql/create/trade.sql}
-\lstinputlisting{../preprocessing/database/sql/create/transaction.sql}
-\lstinputlisting{../preprocessing/database/sql/create/users.sql}
+\lstinputlisting[language=Python]{../preprocessing/database/config.py}
+\lstinputlisting[language=Python]{../preprocessing/database/create_tables.py}
+\subsection{Create Tables}
+\lstinputlisting[language=SQL]{../preprocessing/database/sql/create/block.sql}
+\lstinputlisting[language=SQL]{../preprocessing/database/sql/create/ip_info.sql}
+\lstinputlisting[language=SQL]{../preprocessing/database/sql/create/trade.sql}
+\lstinputlisting[language=SQL]{../preprocessing/database/sql/create/transaction.sql}
+\lstinputlisting[language=SQL]{../preprocessing/database/sql/create/users.sql}
 
-\subsubsection{ETL: Extract Transfer Load}
-\lstinputlisting{../preprocessing/database/connect.py}
-\lstinputlisting{../preprocessing/database/config.py}
-\lstinputlisting{../preprocessing/database/database.py}
-\lstinputlisting{../preprocessing/database/build.py}
+\subsection{ETL: Extract Transfer Load}
+\lstinputlisting[language=Python]{../preprocessing/database/connect.py}
+\lstinputlisting[language=Python]{../preprocessing/database/config.py}
+\lstinputlisting[language=Python]{../preprocessing/database/database.py}
+\lstinputlisting[language=Python]{../preprocessing/database/build.py}
 
-\subsubsection{Query Database}
-\lstinputlisting{../preprocessing/database/query.py}
-\lstinputlisting{../preprocessing/database/batch_query.py}
-\lstinputlisting{../preprocessing/database/sql/query/extract_batch.sql}
-\lstinputlisting{../preprocessing/database/sql/query/extract_info.sql}
+\subsection{Query Database}
+\lstinputlisting[language=Python]{../preprocessing/database/query.py}
+\lstinputlisting[language=Python]{../preprocessing/database/batch_query.py}
+\lstinputlisting[language=SQL]{../preprocessing/database/sql/query/extract_batch.sql}
+\lstinputlisting[language=SQL]{../preprocessing/database/sql/query/extract_info.sql}
 
-\subsubsection{Analysis}
-\lstinputlisting{../analysis/analysis.py}
-\lstinputlisting{../analysis/centrality_figures.py}
-\lstinputlisting{../analysis/centrality.py}
-\lstinputlisting{../analysis/data_exploration.R}
+\subsection{Analysis}
+\lstinputlisting[language=Python]{../analysis/analysis.py}
+\lstinputlisting[language=Python]{../analysis/centrality_figures.py}
+\lstinputlisting[language=Python]{../analysis/centrality.py}
+\lstinputlisting[language=R]{../analysis/data_exploration.R}
