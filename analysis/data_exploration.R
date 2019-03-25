@@ -67,7 +67,7 @@ hist(dt$fee/e_w_rate, col = "orange", border = "grey",
 boxplot(dt$fee/e_w_rate,
         xlab = "Fee per Transaction, in ether")
 
-# CAREFULL!! THIS TAKES TX to make a calculation
+
 hist(dt$value/e_w_rate, col = "orange", border = "grey",
      xlab = "Value of a Transaction, in ether",
      ylab = "Number of Transactions",
