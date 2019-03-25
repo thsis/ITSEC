@@ -1,68 +1,92 @@
-This work aimed to transfer the approaches of the Bitcoin paper \cite{lischke2016analyzing} to the Ethereum blockchain and to get some insights into the Ethereum Economy. 
+This work aimed to transfer the approaches of the Bitcoin paper \cite{lischke2016analyzing} to the Ethereum blockchain and to get some insights about the underlying Ethereum economy and network. 
 To do so, transaction data for 6 months got scraped, displayed and analyzed.
 
-We replicated some of the approaches suggested in \cite{lischke2016analyzing}, adopted the others or came up with new approaches due to the differences in design and supporting infrastructure of the the cryptocurrencies.
+Eventually, we replicated some of the approaches suggested in \cite{lischke2016analyzing}, adopted the others, or came up with new approaches due to the differences in the design and supporting infrastructure of the Ethereum and Bitcoin blockchains.
 
-Beforehand we looked into the previous studies of Ethereum blockchain, to get a better understanding of what was done so far and might find additional information about how to get good off-set data or IP addresses.
-As the Ethereum is still quite new, some papers were still published, which already looked into the Ethereum address spaces, security aspects and theoretical aspects of the Ethereum technology to find patterns within the network.
-None of them brought together transaction and network data to analyze patterns in the combined offset and network data over an extended time period.
+Beforehand, we looked into the previous studies of Ethereum blockchain to gain a better understanding of what was done so far, to benefit from existing findings and potentially to identify the blank spots.
+% and might find additional information about how to get good off-set data or IP addresses.
+Although Ethereum is relatively new, some articles have been published that have already dealt with the address space, security aspects and theoretical aspects of the Ethereum network.
+We identified 4 categories of papers dedicated to the topic.
+The papers focused on descriptive analysis and network metrics analysis appeared to be less present.
+Therefore, we have combined these two categories in our research and used relevant papers as an inspiration when amending approaches of \cite{lischke2016analyzing}.
 
-With that knowledge we worked our way through the same platforms, 'bitcoin.info' to enrich our data set and analyze it in the descriptive and graph analysis.
+% None of them brought together transaction and network data to analyze patterns in the combined offset and network data over an extended time period.
 
-Even if we were not able to get data about the IP addresses, the descriptive analysis delivers information to get related to the network analysis, network structure, interactions between the wallets and underlying business processes.
-Also, design problems can be found and potential privacy and security issues.
+% With that knowledge we worked our way through the same platforms, 'bitcoin.info' to enrich our data set and analyze it in the descriptive and graph analysis.
 
-The network structure reveals information about the major accounts and their activity. 
-Due to these findings we were able to discover, the top 5 receivers and senders in the network.
+Descriptive analysis delivered information about the network structure and interactions between the nodes.
+Thus, the data showed that the transactions volume was varying over time with sudden increases of up to a hundred times.
+This gave the impression that there are major nodes, which distribute disproportional amounts of Ether in the network.
+Further analysis revealed that the Top 5 Senders perform 36\% of the transactions in the network.
+If the Top 50 Senders are considered, the network is even more centralized - 60,1\% of all transactions are covered by them.
+Top 5 and Top 50 addresses received 32\% and 50\% of the monetary volume transmitted within the network.
+Our findings are consistent with those of \cite{payette2017characterizing} who identify 4 behavior clusters of different network participants.
 
-As the data that shows transactions varying from one day to another, from a very low level to relatively high transaction volume.
-This gave the impression that there are major nodes which distribute disproportional amounts of Ether in the network. 
-The data showed, that the Top 5 senders perform 36 \% of the transactions in the network. 
-This discrepancy could be shown between senders and receivers during the examined period. 
-We surmise, that the 4 main receivers belong to currency exchanges. 
-All of them appeared to be smart contracts, same as the first major receiver. 
-Through online research, we were able to identify that wallet as a smart contract designed to deal with the side effects of the hard fork in 2016.
-Due to the fact, that there are major nodes one could identify indirectly the underlying business processes. 
-The discrepancies in the transaction volume could not be investigated conclusively just through the scraped data alone. 
-But a side research showed that the top 5 transaction senders can be identified as mining pools.
+Although we were not able to get data about the IP addresses and business tags for all the transactions in the data set, we did discover the identities of the most active network participants.
+This helped to shed the light on the underlying business processes that are relevant for a significant part of the network.
+For instance, through online research, we have shown that the top 5 transaction Senders can be identified as mining pools.
+We also found out that the 4 main Receivers (in terms of volume) are associated with currency exchanges.
+All of them appeared to be smart contracts, as well as the first major receiver. 
+These findings are mostly in line with \cite{anoaica2018quantitative} and \cite{chen2018understanding}.
+Through online research, we discovered that the biggest receiver is a smart contract ReplaySafeSplit designed to deal with the side effects of the hard fork that happened in 2016. 
+This can partly explain the relatively higher importance of smart contracts according to our research and extends the research of \cite{kiffer2017stick}.
 
-An alternative hypothesis, which would involve potential privacy and security issues could neither be confirmed nor disproved.
 
-To find some major nodes in the Ethereum network, the distribution of several centrality measures were computed and interpreted. 
-Major results are, that within the network one can find major hubs, with high transaction volume. Most of the nodes are not connected. 
+While doing descriptive analysis and supportive online research of anomalies, we also spotted signs of design problems, potential privacy and security issues.
+Thus, the distribution of fees paid per transaction points at the limited number of transactions that can be transmitted in a period of time.
+Accumulation of wealth by major accounts can lead to price manipulation if this wealth is used on currency exchanges.
+Major accounts and smart contracts, which accumulate the wealth of many network participants, were found to be prone to bugs and can potentially also be attacked.
+The major role of the ReplaySafeSplit smart contract which has received the highest volume of the transactions in the dataset is due to the "replay" attack concerns that arose after the DAO incident and hard fork of the Ethereum blockchain.
+The hypothesis about the chain-peeling used to increase the privacy of transactions was neither confirmed nor rejected.
+
+% Due to the fact, that there are major nodes one could identify indirectly the underlying business processes. 
+% The discrepancies in the transaction volume could not be investigated conclusively just through the scraped data alone. 
+
+
+% An alternative hypothesis, which would involve potential privacy and security issues could neither be confirmed nor disproved.
+
+Our findings about the network structure of the Ethereum blockchain were further confirmed, when the distributions of several centrality measures were computed and interpreted. 
+Major results are that within the network one can find major hubs with high transaction volume. Most of the nodes are not connected. 
 They are usually just having little transactions between each other. 
+These findings are in line with \cite{anoaica2018quantitative} and \cite{kim2018measuring}.
 The fit with a theoretical power law distribution shows, the \emph{Small World Phenomenon} can only be confirmed for subgraphs within the network.
 This is also expected given the fact that the graph analysis found out that there are very little nodes which cover moderate to high amounts of transactions.
+Our results partly confirm those achieved by \cite{somin2018network} and \cite{anoaica2018quantitative}.
+The discrepancies can be due to the smaller subset of data we used.
 
 Originally the Ethereum protocol was thought of as a modified version of the Bitcoin Blockchain. 
 That's what Vitalik Buterin had in mind when he wrote the white paper in 2014. 
 The turing completeness should provide opportunities to create applications for any type of application \cite{vitalikwhite}.
 
 Buterin's idea was to optimize the Etherum Blockchain technology to make the blockchain technology more applicable for a larger range of applications. 
-He thought Ethereum being open-ended by design and believes that it is extremely well suited to serve as a basic layer for financial and non-financial applications \cite{vitalikwhite}.
+He thought Ethereum being open-ended by design and believed that it is extremely well suited to serve as a basic layer for financial and non-financial applications \cite{vitalikwhite}.
 
-As shown in the comparison between blockchain and bitcoin, one could guess, that so far this goal is not close to being reached by the Ethereum community. 
+As has been shown in the comparison between blockchain and bitcoin, one could guess, that so far this goal is not close to being reached by the Ethereum community. 
 There are lots of attempts to create applications for the platform and try to find business cases. 
-An indication for that claim is the fact that the number of actively used Ethereum addresses has dropped below 1 million and also that a study on the usage of smart contracts indicated, that 95\% are used just less than 10 times and only 5\% more than that \cite{Chandersekhar2018}.
+An indication for that claim is the fact that the number of actively used Ethereum addresses has dropped below 1 million and also that a study on the usage of smart contracts indicated, that 95\% are used just less than 10 times and only 5\% more than that \cite{Chandersekhar2018}. This is also in line with our findings made during descriptive analysis.
 An interesting question would be, how many contracts exist that are just using up computational capacity without being used more than a few times.
 
-To conclude, we were not able to perform such a comprehensive study as it was done from Lischke and Fabian and the insights into the Ethereum transactions and regarding information are less than expected. 
-We had some limitations along the way.
+To conclude, performed analysis of Ethreum blockchain deviates to a certain extent in its approaches from those suggested by Lischke and Fabian.
+However, it still seems to extend the understanding of the Ethereum blockchain, underlying business activity and interactions between the nodes. 
+It also attracts attention to certain design and security issues, confirms part of the findings made by previous researches and poses an urge for further research in the areas where discrepancies are found.
 
-A crucially limiting factor was the access to the different data sets and the amount of data we were able to collect. 
-The data was incomplete, and we were not able to locate the transactions via IP addresses. 
-In the replicated paper they were able to scrape the data with the transaction data, using 'blockchain.info'. 
-This is not possible for the Ethereum blockchain and a proper workaround was not found easily. 
-We searched for alternative providers, but none of them gave information about the sender's IP address.
-Thus, we could not trace the sender's geographical location, or find a mapping to the wallet's industry tag either. 
+The research had some limitations along the way.
+A crucially limiting factors were the access to the different data sets and the amount of data to be collected.
+Hopefully, future researches will be able to locate the transactions via IP addresses and collect the business tags not only for the major nodes but for the entire dataset.
+% The data was incomplete, and we were not able to locate the transactions via IP addresses. 
+% In the replicated paper they were able to scrape the data with the transaction data, using 'blockchain.info'. 
+% This is not possible for the Ethereum blockchain and a proper workaround was not found easily. 
+% We searched for alternative providers, but none of them gave information about the sender's IP address.
+% Thus, we could not trace the sender's geographical location, or find a mapping to the wallet's industry tag either. 
 Another challenge is, that the network is, in essence, different from the Bitcoin.
-Especially, because the Ethereum blockchain also provides smart contracts and a currency service.
-Where the distinction is not easily made in the data. 
-Some use the platform just for transactions and a lot of them apply smart contracts or decentralized applications. 
- 
+Especially, because the Ethereum blockchain also provides smart contracts in addition to a currency service.
+Where the distinction is not easily made in the data.
+Some use the platform just for transactions and a lot of them apply smart contracts or decentralized applications.
 As mentioned in the methods, for a further paper one could look in more detail into the scraper we applied and modify it for the usage in the 'go' language.
-
-To get back to the data, unfortunately, the time period gathered was during a time when a hard fork happened in the Ethereum network, in 2017. 
-All that happened because of a hard fork incidence, when a complicated hack of a smart contract led to a loss of 12,7 million US Dollar.
-The network got divided and had to reorganize. 
-This brought the noise in the data, which is not the usual situation and to get broader explanations, one should take care to use a different period or a longer one, to get more general insights. However, one is also hard-pressed to find a period in the Ethereum blockchain that does not experience heavy turmoil.
+% 
+To get back to the data, unfortunately, the time period gathered was immediately after the hard fork which happened in the Ethereum network in July 2016.
+% All that happened because of a hard fork incidence, when a complicated hack of a smart contract led to a loss of 12,7 million US Dollar.
+% The network got divided and had to reorganize. 
+This brought the noise in the data, which is not the usual situation.
+To get better and broader explanations, one may use a different or a longer period.
+% However, one is also hard-pressed to find a period in the Ethereum blockchain that does not experience heavy turmoil.
