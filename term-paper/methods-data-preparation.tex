@@ -1,47 +1,17 @@
-\begin{figure}
+\begin{figure*}[!ht]
+\begin{subfigure}{.5\textwidth}
 \centering
-\includegraphics[width=0.55\textwidth, height=200px]{figures/block-headers.png}
+\includegraphics[width=250px, height=200px]{figures/block-headers.png}
 \caption{Block headers \cite{preethi}}
-\end{figure}
-
-\begin{figure}
+\label{blocks}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
 \centering
-\includegraphics[width=0.45\textwidth, height=200px]{figures/transaction-contents.png}
+\includegraphics[width=200px, height=200px]{figures/transaction-contents.png}
 \caption{Transaction contents \cite{preethi}}
-\end{figure}
-
-In order to access the data in any form of blockchain technology one must first be an owner of a full node of the respective network. 
-This means that the whole blockchain data with all its records is stored on the researcher's device. 
-However for the most part, data in this form is not stored in a manner that is easy to query. 
-For this reason we opted to become owners of a full node of the Ethereum blockchain, to subsequently scrape the blockchain for the desired information and to store the results in a relational database, which in turn is easy to query.
-
-The data-scraper is written in the \texttt{Python} language using the \texttt{web3.py} module \cite{Python, web3}.
-Through \texttt{web3.py}'s interface it is possible to interact with the Ethereum blockchain. 
-In particular the \texttt{web3.py} module enables us to extract information for every block and each transaction that is recorded in the blockchain.
-
-\begin{algorithm}
-\begin{algorithmic}
-\State Check progress file if the ETL can be resumed from a block.
-\If {yes}
-    \State current block $c \gets$ content of progress file
-\Else
-    \State $c \gets 1$
-\EndIf
-\State $s \gets 2000000$ 
-\While {$c \leq s$}
-   \State Overwrite progress file with $c$ 
-   \State $content_{Block} \gets \texttt{getBlock(c)}$
-   \State $row_{Block} \gets \texttt{extractInfo(}content_{Block}\texttt{)}$
-   \State $\texttt{write(} row_{Blocks}, \texttt{"Block")}$
-   \For {each $transaction$ in $content_{Block}$}
-       \State $row_{Transaction} \gets \texttt{extractInfo(}transaction\texttt{)}$
-       \State $\texttt{write(} row_{Transaction}, \texttt{"Transactions")}$
-   \EndFor
-\EndWhile
-\end{algorithmic}
-\caption{Data Scraper: Overview}
-\label{etl}
-\end{algorithm}
+\label{transactions}
+\end{subfigure}
+\end{figure*}
 
 
 \begin{figure*}
@@ -85,6 +55,17 @@ In particular the \texttt{web3.py} module enables us to extract information for 
 \label{datamodel}
 \end{figure*}
 
+
+In order to access the data in any form of blockchain technology one must first be an owner of a full node of the respective network. 
+This means that the whole blockchain data with all its records is stored on the researcher's device.
+An overview of the information stored in the Ethereum blockchain is given in figures \ref{blocks} and \ref{transactions}.
+However for the most part, data in this form is not stored in a manner that is easy to query. 
+For this reason we opted to become owners of a full node of the Ethereum blockchain, to subsequently scrape the blockchain for the desired information and to store the results in a relational database, which in turn is easy to query.
+
+The data-scraper is written in the \texttt{Python} language using the \texttt{web3.py} module \cite{Python, web3}.
+Through \texttt{web3.py}'s interface it is possible to interact with the Ethereum blockchain. 
+In particular the \texttt{web3.py} module enables us to extract information for every block and each transaction that is recorded in the blockchain.
+
 In particular, for each block inside a predetermined range we query its contents and obtain the data that is interesting for the further analysis. 
 On the block level we extract the hash of each block as a unique identifier and the time each block was inserted into the blockchain. 
 Note that this is not necessarily the time that the transaction was being commissioned. 
@@ -94,3 +75,28 @@ Along with that information we retrieve a list of transactions that are containe
 Making use of the list of transactions within a block we extract the wallet addresses of both sender and receiver, as well as the total value, of the transaction. 
 Additionally we retrieve information on the gas price for the transaction. 
 Figure \ref{datamodel} summarizes the relations within that database and Algorithm \ref{etl} gives an outline of the datascraper in pseudocode.
+
+
+\begin{algorithm}
+\begin{algorithmic}
+\State Check progress file if the ETL can be resumed from a block.
+\If {yes}
+    \State current block $c \gets$ content of progress file
+\Else
+    \State $c \gets 1$
+\EndIf
+\State $s \gets 2000000$ 
+\While {$c \leq s$}
+   \State Overwrite progress file with $c$ 
+   \State $content_{Block} \gets \texttt{getBlock(c)}$
+   \State $row_{Block} \gets \texttt{extractInfo(}content_{Block}\texttt{)}$
+   \State $\texttt{write(} row_{Blocks}, \texttt{"Block")}$
+   \For {each $transaction$ in $content_{Block}$}
+       \State $row_{Transaction} \gets \texttt{extractInfo(}transaction\texttt{)}$
+       \State $\texttt{write(} row_{Transaction}, \texttt{"Transactions")}$
+   \EndFor
+\EndWhile
+\end{algorithmic}
+\caption{Data Scraper: Overview}
+\label{etl}
+\end{algorithm}

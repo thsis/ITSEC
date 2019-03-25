@@ -9,7 +9,7 @@ This results in a technology that is hard to manipulate, meaning that it becomes
 \begin{figure}[ht]
 \centering
 \caption{Blockchaintechnology is the basis for Ethereum} 
-\includegraphics[width=0.45\textwidth]{blockchaintech}
+\includegraphics[width=0.485\textwidth, height=300px]{blockchaintech}
 \end{figure}
 
 They could realize such a network with three already existing technologies which got combined the first time by Satoshi Nakamoto, for the Bitcoin. 
@@ -60,10 +60,17 @@ The Merkle Tree structure is thus used to make the hole system scalable.
 In general, a Merkle is following the idea to have a big amount of data which are hashed together. 
 They get split into smaller chunk buckets, this gets repeated until there is just a root hash left \cite{Buterin2015}.
 
-\begin{figure*}[ht]
-\centering 
-\caption{Merkle Tree Structure}
-\includegraphics[width=0.4\textwidth]{MerkleTree1}
+\begin{figure*}
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{MerkleTree1.png}
+    \caption{Merkle Tree Structure}
+  \end{subfigure}%
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.7\linewidth, height=120px]{gastransactions.png}
+  \caption{Transactions} 
+  \end{subfigure}
 \end{figure*}
 
 As stated before, this whole process is done to make it possible to perform Merkle proofs. 
@@ -92,14 +99,14 @@ One example often used, is a rent contract in the real work.
 In the real work one would pay rent on a defined date and get entrance to a place for the paid time. A contract represented on Ethereum would look the same, the contracts gets written in Solidity. 
 Then the network executes the contract on the defined date and if the renter does pay as expected, means fulfill the condition he gets entrance to his place. If not, the contracts would simply not open the door anymore. 
 
-So, every component of a contract gets represented the enforcement, management and the payment component [].
+So, every component of a contract gets represented the enforcement, management and the payment component \cite{Dannen2017IES3103305}.
 Back to the example, the person who is renting the property would not get access to his door anymore, if the rent was paid a day later. 
 Here the first problem with smart contracts occurs, the rules are really strict, without any room for exceptional circumstances. 
 Once the code is executed on the network it cannot be edited or corrected anymore. 
 Everything gets executed as written in the code. 
 If one does think about complex contracts this can be a problem.
 If something gets wrong or if there are paragraphs in it which are not covered by law, with a real contract the law in backing these contracts and one could take out paragraphs after a legal process.
-This is not the case in Ethereum, because to edit such a contract the entire network would have to get convinced, that something hast to get changed. Which is almost impossible [].
+This is not the case in Ethereum, because to edit such a contract the entire network would have to get convinced, that something hast to get changed. Which is almost impossible \cite{Dannen2017IES3103305}.
 
 Ethereum also provides a currency to run and incentivize the previously described system. 
 In Ethereum the currency is called Ether. 
@@ -111,18 +118,14 @@ The Gas serves as a fee that is required to execute something in the network.
 As shown in the figure, every operation spends the defined amount of gas. 
 In case the gas is not enough to fulfill the transactions, the sender ‘runs out of gas’ and the End transaction does not get reached. 
 
-\begin{figure}
-\caption{Transactions} 
-\includegraphics[width=0.4\textwidth]{gastransactions}
-\end{figure}
 
 If someone wants to execute something in the network, one has to decide about the gas limit and gas price. 
 This has an influence on the amount of computations that one transaction can do.
 The miner can collect transactions from the transaction Pool, after they pick them their respective code gets executed on the Virtual Machine and the Merkle proof gets created. 
 The last step is to confirm the transaction with the proof of work algorithm. 
 The reward depends on the selected amount of gas for the transaction. 
-That also means, that some transaction might not get mined in case the fee is chosen to low. Another part the gas is used for, is the storing fee, the amount depends on the size of the storage used [].
-On the one hand this was done, so that people will write optimized and efficient code and won`t waste the Ethereum network computing power on unnecessary tasks [].
+That also means, that some transaction might not get mined in case the fee is chosen to low. Another part the gas is used for, is the storing fee, the amount depends on the size of the storage used \cite{preethi}.
+On the one hand this was done, so that people will write optimized and efficient code and won`t waste the Ethereum network computing power on unnecessary tasks \cite{preethi, Dannen2017IES3103305}.
 On the other hand, this is a way to incentivize the mining process of transaction. 
 This helps to verify the transaction and should be described a little more into detail. 
 This process verifies the transaction and is carried out to secure against counterfeiting. 
